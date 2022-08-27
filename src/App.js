@@ -1,16 +1,17 @@
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Menu from './componentes/Nabvar.js';
-
+import Nabvar from './componentes/Nabvar.js';
+import ItemListContainer from './componentes/ItemListContainer.js';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" >
      
  
-      <Menu/>
-    
+      <Nabvar/>
+      <ItemListContainer props={3}/>
+  
     </div>
   );
 }
