@@ -1,9 +1,15 @@
 import React from 'react';
+import ItemCount from './ItemCount';
 
-const Greeting=({props})=>{
+const onAdd=({props})=>{
+
+
     return(
-        <div style={{color:"red"}}>La cantidad de productos a listar es: {props}, gracias por su visita</div>
+        <div className="carrito" style={{color:"red"}}>se agregaron: {props}, unidades al carrito
+        <br></br>
+        <ItemCount stock={5} initial={1} onAdd={props}/>
+        </div>
     )
 }
     
-export default Greeting
+export default onAdd
