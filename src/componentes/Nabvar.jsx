@@ -1,8 +1,15 @@
 import Container from 'react-bootstrap/Container';
+
+import {Link} from 'react-router-dom';
+
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Logo from '../assets/img/logo.png';
 import CartWidget from './CartWidget'
+
+
+
+
 function ListadeMenues() {
   return (
     <>
@@ -14,7 +21,16 @@ function ListadeMenues() {
             <Nav.Link href="#INICIO">INICIO</Nav.Link>
             <Nav.Link href="#TIENDA">TIENDA ONLINE</Nav.Link>
             <Nav.Link href="#OFERTAS">OFERTAS</Nav.Link>
+
+         
+
             <Nav.Link href="#CARRITO"> <CartWidget/> </Nav.Link>
+
+{/* /categoria/1  El uno es la variable que colocaremos en la URL, la cual tomara el Router para cargar el componente indicado en el archivo Home.jsx*/}
+            <Link to='/categoria/1'>Categoria 1</Link>
+            <br/>
+            <Link to='/categoria/2'>Categoria 2</Link>
+            
           </Nav>
         </Container>
 

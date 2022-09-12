@@ -1,9 +1,10 @@
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 
 const Imagenes=require.context('../assets/img',true);//true es para que tambien busque en subdirectorios
 
-const  Item= ({id,title,stock,price,pictureUrl}) =>{
+const  Item= ({id,title,stock,price,pictureUrl,idcategoria}) =>{
   return (
     <Card style={{ width: '18rem' }}>
       {/* utilizo las llaves para colocar comentario:
@@ -26,7 +27,11 @@ const  Item= ({id,title,stock,price,pictureUrl}) =>{
            {/*stock la obtengo del JSON */}
          Stock disponible: {stock} unidades.
         </Card.Text>
-        <Button variant="success">Ver detalle...</Button>
+        <Card.Text>
+           {/*categoria la obtengo del JSON */}
+         Categoria: {idcategoria} 
+        </Card.Text>
+        <Button variant="success"> <Link to={`/item/${id}`}>Ver detalle...</Link></Button>
       </Card.Body>
     </Card>
   );
