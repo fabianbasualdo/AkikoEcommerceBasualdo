@@ -1,31 +1,40 @@
-import React,{useState} from 'react';
 
 
-export default function ItemCount({stock,initial,onAdd}){
-    const[sstock,setSstock]=useState(initial);
+import { useEffect, useState } from 'react';
 
 
-    const sumar = ()=>setSstock(sstock + 1);
-    const restar = ()=>setSstock(sstock - 1);
-    function carrito(any){
-    alert("Agregaste al carrito: " + any + " productos");
+const ItemCount = ({ stock = 0, initial = 1,  onAdd }) => {
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        setCount(initial);
+    },[initial]);
+
+    const increment = () => {
+        if (count < stock) {
+            setCount(count + 1);
+        }
     }
+    
+    const decrement = () => {
+        if (count > initial+1) {
+            setCount(count - 1);
+        }
+    }
+    return (
+        <>
+            <button variant="text" onClick={increment} >+</button>
+           <span>{count}</span>
+            <button variant="text" onClick={decrement}>-</button>
+            {
+                stock && count
+                ? <button variant="contained" color="primary" onClick={() => onAdd(count)}>Add to Cart</button>
 
-
-  return (
-    <>
-    <h2>ItemCount</h2>
-    <nav>
-        <button disabled={sstock>=stock} onClick={sumar}>+</button>
-        <button disabled={sstock<=1} onClick={restar}>-</button>
-        <h3>{sstock}</h3>
-        <div>
-          <br></br>
-          <button disabled={sstock<=0} onClick={()=>carrito(sstock)}>Agregar al carrito</button>
-          
-        </div>
-    </nav>
-   
-    </>
-  );
+                : <button variant="contained" disabled>Add to Cart</button>
+            }
+         </>   
+        
+    );
 }
+
+export default ItemCount;
