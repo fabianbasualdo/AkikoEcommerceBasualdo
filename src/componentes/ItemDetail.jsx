@@ -51,7 +51,7 @@ const ItemDetail = ({ item }) => {
         </Card.Text>
         {
             /*si itemCount es cero, entonces dibujo el componente ItemCount, que me dara la posibilidad de comprar mas productos*/
-                        itemCount === 1
+                        itemCount === 0
                         ? <ItemCount stock={item.stock} initial={itemCount} onAdd={onAdd} />
                         : <Link to='/cart' style={{textDecoration: "none"}}><Button variant="contained" color="secondary">Terminar mi Compra</Button></Link>
                     }
