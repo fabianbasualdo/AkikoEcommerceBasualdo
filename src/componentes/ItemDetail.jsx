@@ -12,7 +12,7 @@ const ItemDetail = ({ item }) => {
     const [itemCount, setItemCount] = useState(0);
 
     const onAdd = (qty) => {
-        alert("tu seleccionaste " + qty + " items.");
+        alert("tu seleccionaste para agregar al carrito " + qty + " elementos.");
         setItemCount(qty);
     }
 
