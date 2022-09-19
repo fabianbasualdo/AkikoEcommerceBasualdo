@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import ItemCount from './ItemCount';
 import Card from 'react-bootstrap/Card';
 
+/*importo el contexto */
+import { useCartContext } from "../context/cartContext";
 
 const Imagenes=require.context('../assets/img',true);
 
@@ -11,9 +13,26 @@ const Imagenes=require.context('../assets/img',true);
 const ItemDetail = ({ item }) => {
     const [itemCount, setItemCount] = useState(0);
 
+
+    
+    //const [addedToCart, setAddedToCart] = useState(false);
+    const { addToCart } = useCartContext();
+   
+    
+   
     const onAdd = (qty) => {
+      
+         /*cuando presione el boton "agregar al carrito" del componente ItemCount.jsx,cargara con la cantidad comprada y los detalle del producto elegido en este metodo llamado addToCart, que proviene del contexto llamado cartContext.js */
+       addToCart({
+        quantity: qty, /*qty es la variable  del boton "+ o -", que indica la cantidad comprada */
+        product: item, /*ingreso el producto elegido utilizando item */
+      });
+         
+
+           
         alert("tu seleccionaste para agregar al carrito " + qty + " elementos.");
         setItemCount(qty);
+        
     }
 
     return (
