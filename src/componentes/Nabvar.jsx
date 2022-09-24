@@ -27,6 +27,7 @@ function ListadeMenues() {
             <Nav.Link href="#CARRITO"> <CartWidget/> </Nav.Link>
 
 {/* /categoria/1  El uno es la variable que colocaremos en la URL, la cual tomara el Router para cargar el componente indicado en el archivo Home.jsx*/}
+<br/>
             <Link to='/categoria/1'>Categoria 1</Link>
             <br/>
             <Link to='/categoria/2'>Categoria 2</Link>

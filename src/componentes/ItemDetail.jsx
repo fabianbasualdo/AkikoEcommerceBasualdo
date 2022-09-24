@@ -47,7 +47,7 @@ const ItemDetail = ({ item }) => {
       utilizo la constante llamada Imagenes para indicar la ruta donde tengo las imagenes, 
       pictureUrl contiene el nombre de la imagen, dicho nombre la leo del archivo JSON llamado Productos
       */}
-      <Card.Img variant="top" src={Imagenes(`./${item.imagen[0]}`)} />
+      <Card.Img variant="top" src={Imagenes(`./${item.product.imagen[0]}`)} />
       <Card.Body>
         {/*title la obtengo del JSON */}
         <Card.Title>{item.nombre}
