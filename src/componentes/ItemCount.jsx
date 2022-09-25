@@ -1,5 +1,3 @@
-
-
 import { useEffect, useState } from 'react';
 
 /*al parametro "initial" llegara el useState llamado itemCount, 

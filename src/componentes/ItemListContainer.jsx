@@ -1,6 +1,6 @@
 import React,{useEffect,useState } from 'react';
 import { useParams } from 'react-router';
-//import ItemCount from './ItemCount';
+
 import ItemList from './ItemList';
 import customFetch from '../utils/customFetch';
 const {productos}=require("../utils/productos");
@@ -13,7 +13,7 @@ const ItemListContainer = () => {
 
     console.log(idCategory);
 
-    //componentDidUpdate
+    
     useEffect(() => {
         customFetch(2000, productos.filter(item => {
             if (idCategory === undefined) return item;
