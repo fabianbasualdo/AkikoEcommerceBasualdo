@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 /******************************************************************************************************/
 import { useCartContext } from "../context/cartContext";
 
-
+//import 'bootstrap/dist/css/bootstrap.min.css'
 /******************************************************************************************************/
 
 

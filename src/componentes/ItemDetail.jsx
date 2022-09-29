@@ -3,11 +3,12 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import ItemCount from './ItemCount';
 import Card from 'react-bootstrap/Card';
+import React from 'react';
 
 /*importo el contexto */
 import { useCartContext } from "../context/cartContext";
 
-const Imagenes=require.context('../assets/img',true);
+//const Imagenes=require.context('../assets/img',true);
 
 //item es el registro obtenido en la busqueda de itemDetailContainer.jsx
 const ItemDetail = ({ item }) => {
@@ -20,17 +21,18 @@ const ItemDetail = ({ item }) => {
    
     
    
-    const onAdd = (qty) => {
+   const onAdd = (qty) => {
       
          /*cuando presione el boton "agregar al carrito" del componente ItemCount.jsx,cargara con la cantidad comprada y los detalle del producto elegido en este metodo llamado addToCart, que proviene del contexto llamado cartContext.js */
        addToCart({
-        quantity: qty, /*qty es la variable  del boton "+ o -", que indica la cantidad comprada */
-        product: item, /*ingreso el producto elegido utilizando item */
+        quantity: qty, 
+        product: item 
       });
+    
          
 
            
-        alert("tu seleccionaste para agregar al carrito " + qty + " elementos.");
+       alert("tu seleccionaste para agregar al carrito " + qty + " elementos.");
         setItemCount(qty);
         
     }
@@ -39,15 +41,15 @@ const ItemDetail = ({ item }) => {
         <>
         {
             //pregunto si obtuve un registro, si lo obtuve dibujo el DOM
-            item && item.imagen
+            item //&& item.imagen
            ? 
 
 <Card style={{ width: '18rem' }}>
       {/* utilizo las llaves para colocar comentario:
       utilizo la constante llamada Imagenes para indicar la ruta donde tengo las imagenes, 
       pictureUrl contiene el nombre de la imagen, dicho nombre la leo del archivo JSON llamado Productos
-      */}
-      <Card.Img variant="top" src={Imagenes(`./${item.imagen[0]}`)} />
+      <Card.Img variant="top" src={Imagenes(`./${item.imagen[0]}`)} />*/}
+      <Card.Img variant="top" src=""/>
       <Card.Body>
         {/*title la obtengo del JSON */}
         <Card.Title>{item.nombre}
@@ -69,9 +71,9 @@ const ItemDetail = ({ item }) => {
            Descripcion: {item.descripcion}
         </Card.Text>
         {
-            /*si itemCount es cero, entonces dibujo el componente ItemCount, que me dara la posibilidad de comprar mas productos*/
+            /*si itemCount es cero, entonces dibujo el componente ItemCount, que me dara la posibilidad de comprar mas productos onAdd={onAdd}*/
                         itemCount === 0
-                        ? <ItemCount stock={item.stock} initial={itemCount} onAdd={onAdd} />
+                        ? <ItemCount stock={item.stock} initial={itemCount} onAdd={()=>onAdd()}/>
                         : <Link to='/cart' style={{textDecoration: "none"}}><Button variant="contained" color="secondary">Terminar mi Compra</Button></Link>
                     }
 

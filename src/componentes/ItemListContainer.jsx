@@ -2,8 +2,12 @@ import React,{useEffect,useState } from 'react';
 import { useParams } from 'react-router';
 
 import ItemList from './ItemList';
-import customFetch from '../utils/customFetch';
-const {productos}=require("../utils/productos");
+//import customFetch from '../utils/customFetch';
+
+import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
+
+
+//const {productos}=require("../utils/productos");
 
 
   
@@ -15,13 +19,26 @@ const ItemListContainer = () => {
 
     
     useEffect(() => {
-        customFetch(2000, productos.filter(item => {
+
+        const db = getFirestore();
+        if (idCategory) {
+            const queryCollectionCategory = query(collection(db, 'Productos'), where('idcategoria', '==', idCategory) )
+            getDocs(queryCollectionCategory)
+            .then(resp => setDatos( resp.docs.map(prod => ({ id: prod.id, ...prod.data()}))))
+            //.finally(() => setLoading(false))
+        } else {
+            const queryCollection = collection(db, 'Productos')
+            getDocs(queryCollection)
+            .then(resp => setDatos( resp.docs.map(prod => ({ id: prod.id, ...prod.data()}))))
+            //.finally(() => setLoading(false))
+        }  
+        /*customFetch(2000, productos.filter(item => {
             if (idCategory === undefined) return item;
             
             return item.idcategoria === parseInt(idCategory)
         }))
             .then(result => setDatos(result))
-            .catch(err => console.log(err))
+            .catch(err => console.log(err))*/
     }, [idCategory]);
 
     return (

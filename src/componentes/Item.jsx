@@ -2,7 +2,7 @@ import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 
-const Imagenes=require.context('../assets/img',true);//true es para que tambien busque en subdirectorios
+//const Imagenes=require.context('../assets/img',true);//true es para que tambien busque en subdirectorios
 
 const  Item= ({id,title,stock,price,pictureUrl,idcategoria}) =>{
   return (
@@ -10,8 +10,9 @@ const  Item= ({id,title,stock,price,pictureUrl,idcategoria}) =>{
       {/* utilizo las llaves para colocar comentario:
       utilizo la constante llamada Imagenes para indicar la ruta donde tengo las imagenes, 
       pictureUrl contiene el nombre de la imagen, dicho nombre la leo del archivo JSON llamado Productos
-      */}
-      <Card.Img variant="top" src={Imagenes(`./${pictureUrl}`)} />
+      <Card.Img variant="top" src={Imagenes(`./${pictureUrl}`)} />*/}
+  
+      <Card.Img variant="top" src="" />
       <Card.Body>
         {/*title la obtengo del JSON */}
         <Card.Title>{title}</Card.Title>
