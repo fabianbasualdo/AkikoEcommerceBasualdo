@@ -37,5 +37,13 @@ const ItemDetailContainer = () => {
         </>
     );
 }
-
+/*la base de datos se llama AkikoEcommerce:
+los campos son: 
+ costo
+descripcion
+id
+idcategoria
+imagen
+nombre
+stock*/
 export default ItemDetailContainer;
