@@ -26,11 +26,13 @@ const ItemListContainer = () => {
             getDocs(queryCollectionCategory)
             .then(resp => setDatos( resp.docs.map(prod => ({ id: prod.id, ...prod.data()}))))
             //.finally(() => setLoading(false))
+            console.log("HOLA1")
         } else {
             const queryCollection = collection(db, 'Productos')
             getDocs(queryCollection)
             .then(resp => setDatos( resp.docs.map(prod => ({ id: prod.id, ...prod.data()}))))
             //.finally(() => setLoading(false))
+            console.log("HOLA2")
         }  
         /*customFetch(2000, productos.filter(item => {
             if (idCategory === undefined) return item;

@@ -27,8 +27,8 @@ export const CartContextProvider = ({ children }) => {
 
 
 /******************************************************************************************************/
-  const addToCart = (objProduct) => {
-    let carritoprevio = [...cartList];
+const addToCart = (objProduct) => {
+   let carritoprevio = [...cartList];
 
     /*some: traera un verdadero o falso, si alguno de los valores del array cumplen con la condicion */
   if (carritoprevio.some((idex) => idex.product.id === objProduct.product.id))
@@ -38,12 +38,23 @@ export const CartContextProvider = ({ children }) => {
       //actualiza el producto encontrado con su nueva cantidad comprada.
       setCartList(carritoprevio);/*este es el valor que pasara el contexto */
 
-    } //si no encuentra el producto buscado lo agrega como uno nuevo al carrito
+   } //si no encuentra el producto buscado lo agrega como uno nuevo al carrito
     else {
       setCartList([...cartList, objProduct]);/*concatena lo que tiene cartList, con lo que tiene objProduct eso lo logra al colocar los tres puntitos, luego utiliza setCartList para asignarle el valor al useState llamado CartList*/
     }
   };
+  /*function addToCart(item){
 
+    const index = cartList.findIndex(i => i.id === item.id)
+
+    if (index > -1) {
+        const oldItem = cartList[index].quantity
+        cartList.splice(index, 1)
+        setCartList([...cartList, {...item, quantity: item.quantity + oldItem}])
+    } else {
+        setCartList([...cartList, item])
+    }
+}*/
 /******************************************************************************************************/
 //borro todo el contenido del carrito
   const clearList = () => setCartList([]);

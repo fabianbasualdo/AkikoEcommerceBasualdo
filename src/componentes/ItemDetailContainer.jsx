@@ -5,6 +5,7 @@ import { useParams } from "react-router";
 import ItemDetail from "./ItemDetail";
 import { doc, getDoc, getFirestore } from 'firebase/firestore';
 //const { productos } = require('../utils/productos');
+  
 
 
 const ItemDetailContainer = () => {
@@ -12,12 +13,20 @@ const ItemDetailContainer = () => {
 
     const { idItem } = useParams();//obtengo el valor del parametro idItem que le pase por URL, usando router que esta declarado en el archivo home.jsx
     console.log(idItem);
+    console.log("HOLA3");
+
+  
+    
     useEffect(() => {
 
         const db = getFirestore()
         const queryDb = doc(db, 'Productos', idItem )
-        getDoc(queryDb)
-        .then(resp => setDato( { id: resp.id, ...resp.data() } ))
+         getDoc(queryDb)
+      
+
+
+
+        .then(resp => setDato( { id:resp.id, ...resp.data() } ))
         
         //Con find obtengo la primer coincidencia de lo que busco dentro del JSON.
         /*customFetch(2000, productos.find(item => {
@@ -33,6 +42,7 @@ const ItemDetailContainer = () => {
     return (
         <>
         {/*dibujo la pantalla con el registro obtenido en el useEffect */}
+        
         <ItemDetail item={dato} />
         </>
     );

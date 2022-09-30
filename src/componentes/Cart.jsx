@@ -10,7 +10,7 @@ import { useCartContext } from "../context/cartContext";
 import PriceTotal from './PriceTotal';
 
 
-const Imagenes=require.context('../assets/img',true);
+//const Imagenes=require.context('../assets/img',true);
 
 const Cart = () => {
 
@@ -79,7 +79,7 @@ const Cart = () => {
         <>
           <div className="grid grid-cols-1 px-4 mt-6 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
             {
-            //recorro el carrito(cartList) y voy dibujando el DOM
+            //recorro el carrito(cartList) y voy dibujando el DOM src={Imagenes(`./${item.product.imagen[0]}`)}   alt={item.product.nombre}
             cartList.map((item) => {
               return (
                 <div
@@ -88,7 +88,7 @@ const Cart = () => {
                 >
                   <div className="w-full overflow-hidden bg-gray-200 rounded-md min-h-80 aspect-w-1 aspect-h-1 group-hover:opacity-75 lg:h-80 lg:aspect-none">
                     <img
-                      src={Imagenes(`./${item.product.imagen[0]}`)}
+                      src=""
                       alt={item.product.nombre}
                       className="object-cover object-center w-full h-full lg:w-full lg:h-full"
                     />
@@ -96,7 +96,7 @@ const Cart = () => {
 
 
                   <div className="mb-4">
-                    <h3 className="text-sm font-extrabold text-gray-700">
+                  <h3 className="text-sm font-extrabold text-gray-700">
                       <span aria-hidden="true" className="inset-0" />
                       {item.product.nombre}
                     </h3>

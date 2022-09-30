@@ -24,11 +24,11 @@ const ItemDetail = ({ item }) => {
    const onAdd = (qty) => {
       
          /*cuando presione el boton "agregar al carrito" del componente ItemCount.jsx,cargara con la cantidad comprada y los detalle del producto elegido en este metodo llamado addToCart, que proviene del contexto llamado cartContext.js */
-       addToCart({
+       /*addToCart({
         quantity: qty, 
         product: item 
-      });
-    
+      });*/
+      addToCart({...item, quantity: qty})
          
 
            
@@ -71,9 +71,9 @@ const ItemDetail = ({ item }) => {
            Descripcion: {item.descripcion}
         </Card.Text>
         {
-            /*si itemCount es cero, entonces dibujo el componente ItemCount, que me dara la posibilidad de comprar mas productos onAdd={onAdd}*/
+            /*si itemCount es cero, entonces dibujo el componente ItemCount, que me dara la posibilidad de comprar mas productos onAdd={onAdd}   onAdd={()=>onAdd()}*/
                         itemCount === 0
-                        ? <ItemCount stock={item.stock} initial={itemCount} onAdd={()=>onAdd()}/>
+                        ? <ItemCount stock={item.stock} initial={itemCount} onAdd={onAdd}/>
                         : <Link to='/cart' style={{textDecoration: "none"}}><Button variant="contained" color="secondary">Terminar mi Compra</Button></Link>
                     }
 
