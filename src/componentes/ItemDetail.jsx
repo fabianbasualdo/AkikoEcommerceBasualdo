@@ -14,7 +14,7 @@ import { useCartContext } from "../context/cartContext";
 const ItemDetail = ({ item }) => {
     const [itemCount, setItemCount] = useState(0);
 
-
+console.log("ItemDetail: "+item)
     
     //const [addedToCart, setAddedToCart] = useState(false);
     const { addToCart } = useCartContext();
@@ -22,13 +22,13 @@ const ItemDetail = ({ item }) => {
     
    
    const onAdd = (qty) => {
-      
+    console.log("ItemDetail,Dentro de onAdd: "+(item.id))
          /*cuando presione el boton "agregar al carrito" del componente ItemCount.jsx,cargara con la cantidad comprada y los detalle del producto elegido en este metodo llamado addToCart, que proviene del contexto llamado cartContext.js */
-       /*addToCart({
+      addToCart({
         quantity: qty, 
         product: item 
-      });*/
-      addToCart({...item, quantity: qty})
+      });
+      //addToCart({...item, quantity: qty})
          
 
            

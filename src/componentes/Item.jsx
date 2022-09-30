@@ -2,6 +2,10 @@ import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 
+//1:CONTIENE EL BOTON VER DETALLE
+/**********************************/
+
+
 //const Imagenes=require.context('../assets/img',true);//true es para que tambien busque en subdirectorios
 
 const  Item= ({id,title,stock,price,pictureUrl,idcategoria}) =>{

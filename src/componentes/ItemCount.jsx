@@ -12,12 +12,15 @@ const ItemCount = ({ stock = 0, initial = 1,  onAdd }) => {
     const increment = () => {
         if (count < stock) {
             setCount(count + 1);/*cada vez que cambie el valor de count cambiara el useState itemCount, porque entro a traves del parametro llamado initial*/
+
+            console.log(count)
         }
     }
     
     const decrement = () => {
         if (count > initial+1) {
             setCount(count - 1);
+            console.log(count)
         }
     }
     return (

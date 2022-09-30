@@ -5,8 +5,10 @@ import { useParams } from "react-router";
 import ItemDetail from "./ItemDetail";
 import { doc, getDoc, getFirestore } from 'firebase/firestore';
 //const { productos } = require('../utils/productos');
-  
 
+
+//2: REALIZA LA BUSQUEDA DE LOS PRODUCTOS EN LA BASE DE DATOS
+//2: Viene el idItem desde el componente item, que es cuando presiono el boton Ver detalle...
 
 const ItemDetailContainer = () => {
     const [dato, setDato] = useState({});//utilizo esta para guarda el registro encontrado con find
