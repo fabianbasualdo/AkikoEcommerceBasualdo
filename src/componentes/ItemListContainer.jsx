@@ -4,7 +4,7 @@ import { useParams } from 'react-router';
 import ItemList from './ItemList';
 //import customFetch from '../utils/customFetch';
 
-import {collection, getDocs, getFirestore, query, where, doc, getDoc} from 'firebase/firestore';
+import {collection, getDocs, getFirestore, query, where} from 'firebase/firestore';
 //import { faDraftingCompass } from '@fortawesome/free-solid-svg-icons';
 
 
@@ -20,16 +20,20 @@ const ItemListContainer = () => {
     console.log("ItemListContainer idCategoria:"+ idCategory);
    
    
-    /*const db = getFirestore()
-    const queryDb = doc(db, 'Productos', idItem )
-     getDoc(queryDb)
-     .then(resp => setDato( { id:resp.id, ...resp.data() } ))*/
+   /*
+   codigo que va realmente
+        const queryCollectionCategory = query(collection(db, 'Productos'), where('idcategoria', '==', idCategory) )
+            getDocs(queryCollectionCategory)
+            .then(resp => setDatos( resp.docs.map(prod => ({ id: prod.id, ...prod.data()}))))
+            //.finally(() => setLoading(false))
+            console.log("ItemListContainer, busca por categoria")
+   */
     
     useEffect(() => {
 
         const db = getFirestore();
         if (idCategory) {
-            const queryCollectionCategory = query(collection(db, 'Productos'), where('id', '==', '3Zv4EJosKnz8eWKhz82T') )
+            const queryCollectionCategory = query(collection(db, 'Productos'), where('id', '==', idCategory) )
             getDocs(queryCollectionCategory)
             .then(resp => setDatos( resp.docs.map(prod => ({ id: prod.id, ...prod.data()}))))
             //.finally(() => setLoading(false))

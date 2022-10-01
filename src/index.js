@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { getFireStoreApp } from './componentes/config/getFireStoreApp.jsx';
+import { getFireStoreApp } from './config/getFireStoreApp.jsx';
 
 getFireStoreApp();
 const root = ReactDOM.createRoot(document.getElementById('root'));
