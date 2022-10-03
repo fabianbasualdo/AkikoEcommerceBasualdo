@@ -9,7 +9,7 @@ import { useCartContext } from "../context/cartContext";
 
 import PriceTotal from './PriceTotal';
 
-
+import FormCount from './FormCount'
 //const Imagenes=require.context('../assets/img',true);
 
 const Cart = () => {
@@ -142,7 +142,7 @@ const Cart = () => {
 {/******************Si cartList es mayor a cero(es decir, si el carrito tiene productos) carga el componente PriceTotal, que es total en pesos que pagara el cliente, sumara todos los productos agregados al carrito********************/}
       {cartList.length > 0 ? (
         <>
-         
+         <FormCount />
           <PriceTotal />
         </>
       ) : null}
