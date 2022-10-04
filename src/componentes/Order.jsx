@@ -2,23 +2,24 @@ import { useState, useEffect } from 'react';
 import Spinner from '../componentes/UI/Spinner';
 import { useParams } from 'react-router-dom';
 
-//import { getFirestore} from 'firebase/firestore';
+import { getFirestore} from 'firebase/firestore';
 import { getItemById } from '../config/api'
 
 const Order = () => {
   const [products, setProducts] = useState([]);
   const [customer, setCustomer] = useState(null);
   const [load, setLoad] = useState(true);
+
+  //const { orderId } = useParams();
   const params = useParams();
   const id = params.orderId !== undefined ? params.orderId : '';
+ 
 
   useEffect(() => {
     //const db = getFirestore();
-console.log("ORDERs parametro pasado")
-console.log(id)
-    //aca se esta colgando
+
     //const query = db.collection('Orders').doc(`${id}`);
-    const query=getItemById(id);
+    const query= getItemById(id);
     query
       .get()
       .then((res) => {
@@ -29,6 +30,21 @@ console.log(id)
       .catch((err) => console.error(err))
       .finally(() => setLoad(false));
   }, [id]);
+  /*const query=await getItemById(id);
+  console.log("Orden de compra")
+  console.log(query)
+  console.log("query comprador")
+  console.log(query.comprador)
+  console.log("query items")
+  console.log(query.items)
+  setCustomer(query.comprador);
+  setProducts(query.items);
+  console.log("SetCustomer")
+  console.log(customer)
+  console.log("setProducts")
+  console.log(products)
+  setLoad(false);*/
+  /******************************************************************* */
 
   const totalLong = products.reduce((acum, valor) => acum + valor.costo, 0);
   const total = parseFloat(totalLong).toFixed(2);
@@ -105,19 +121,19 @@ console.log(id)
                         </td>
                         <td className="px-6 py-4 text-center whitespace-nowrap">
                           <div className="text-sm text-gray-900">
-                            {product.nombre}
+                            {product.title}
                           </div>
                         </td>
                         <td className="px-6 py-4 text-center whitespace-nowrap">
                           <span className="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">
                             ${' '}
                             {parseFloat(
-                              product.costo / product.quantity
+                              product.price / product.quantity
                             ).toFixed(2)}
                           </span>
                         </td>
                         <td className="px-6 py-4 text-sm text-center text-gray-500 whitespace-nowrap">
-                          $ {product.costo}
+                          $ {product.price}
                         </td>
                       </tr>
                     ))}

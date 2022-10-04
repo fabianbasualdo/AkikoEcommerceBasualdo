@@ -31,11 +31,11 @@ const Cart = () => {
             Gracias por tu compra <br />
 
         
-            tu compra # es : {orderId}
+            tu Numero de compra # es : {orderId}
           
 
           </h2>
-          {/*linkeara en un futuro hacia esta pagina que simulara el ticket */}
+          {/*linkeara en un futuro hacia esta pagina que simulara el ticket 
           <Link to={`/order/${orderId}`}>
 
 
@@ -45,7 +45,7 @@ const Cart = () => {
             >
              mira tu compra
             </button>
-          </Link>
+          </Link>*/}
         </div>
       )}
   
