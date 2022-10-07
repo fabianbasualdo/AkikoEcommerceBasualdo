@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import Spinner from '../componentes/UI/Spinner';
 import { useParams } from 'react-router-dom';
 
-import { getFirestore} from 'firebase/firestore';
+import {getFirestore, getDoc} from 'firebase/firestore';
 import { getItemById } from '../config/api'
 
 const Order = () => {
   const [products, setProducts] = useState([]);
-  const [customer, setCustomer] = useState(null);
+  const [customer, setCustomer] = useState([]);
   const [load, setLoad] = useState(true);
 
   //const { orderId } = useParams();
@@ -20,12 +20,14 @@ const Order = () => {
 
     //const query = db.collection('Orders').doc(`${id}`);
     const query= getItemById(id);
-    query
-      .get()
+    //query
+      //.get()
+      getDoc(query)
       .then((res) => {
         const order = res.data();
-        setCustomer(order.comprador);
-        setProducts(order.items);
+        
+        setCustomer({id:res.id,...res.data().comprador});
+        setProducts({id:res.id,...res.data().items});
       })
       .catch((err) => console.error(err))
       .finally(() => setLoad(false));
@@ -45,11 +47,13 @@ const Order = () => {
   console.log(products)
   setLoad(false);*/
   /******************************************************************* */
-
+console.log("ORDER ORDER:")
+console.log(products)
   const totalLong = products.reduce((acum, valor) => acum + valor.costo, 0);
   const total = parseFloat(totalLong).toFixed(2);
 
   return (
+    
     <div className="flex flex-col py-12">
       <h1 className="mb-2 text-xl font-extrabold text-indigo-900">
         Numero de compra # {id}

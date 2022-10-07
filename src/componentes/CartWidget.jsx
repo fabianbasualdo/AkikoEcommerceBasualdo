@@ -14,7 +14,7 @@ const Carrito =()=>{
 {/*dibujo el carrito en el dom */}
 <FontAwesomeIcon icon={faCartShopping}/>
 
-{/*si el carrito esta vacio carga una etiqueta <span>, de lo contrario carga un componente nativo de react llamado Badge el cual llama a la metodo global del cartContext.js "iconCart()" el cual contiene un acumulador numerico de cantidad de productos que voy agregando al carrito*/}
+{/*si el carrito esta vacio carga una etiqueta <span>, de lo contrario carga un componente nativo de react llamado Badge el cual llama al metodo global del cartContext.js "iconCart()" el cual contiene un acumulador numerico de cantidad de productos que voy agregando al carrito*/}
       {cartList.length === 0 
             ?
                 <span></span>
