@@ -3,7 +3,8 @@ import React,{useEffect,useState } from 'react';
 import { useParams } from 'react-router';
 import ItemList from './ItemList';
 //import customFetch from '../utils/customFetch';
-import {collection, getDocs, getFirestore, query, where} from 'firebase/firestore';
+//import {collection, getDocs, getFirestore, query, where} from 'firebase/firestore';
+import { getItems } from '../config/api';
 //import { faDraftingCompass } from '@fortawesome/free-solid-svg-icons';
 //const {productos}=require("../utils/productos");
  
@@ -13,9 +14,27 @@ const ItemListContainer = () => {
 
 
     console.log("ItemListContainer idCategoria:"+ idCategory);
+   /********************* */
+   useEffect(() =>{
+    
+    getItems().then((res) =>{
+      if(idCategory){
+        const filtrado = res.filter((data) => data.idcategoria === idCategory)
+        setDatos(filtrado)
+      }else{
+        setDatos(res)
+      }
+     // setLoading(false)
+    })
+    
+    //return() =>{
+      //setLoading(true)
+    //}
+    
    
-   
-    useEffect(() => {
+  },[idCategory])
+   /******************** */
+    /*useEffect(() => {
 
         const db = getFirestore();
         if (idCategory) {
@@ -37,8 +56,8 @@ const ItemListContainer = () => {
             return item.idcategoria === parseInt(idCategory)
         }))
             .then(result => setDatos(result))
-            .catch(err => console.log(err))*/
-    }, [idCategory]);
+            .catch(err => console.log(err))
+    }, [idCategory]);*/
 
     return (
         <>  
