@@ -16,7 +16,7 @@ const  Item= ({id,title,stock,price,pictureUrl,idcategoria}) =>{
       pictureUrl contiene el nombre de la imagen, dicho nombre la leo del archivo JSON llamado Productos
       <Card.Img variant="top" src={Imagenes(`./${pictureUrl}`)} />*/}
   
-      <Card.Img variant="top" src="" />
+      <Card.Img variant="top" src={pictureUrl} />
       <Card.Body>
         {/*title la obtengo del JSON */}
         <Card.Title>{title}</Card.Title>

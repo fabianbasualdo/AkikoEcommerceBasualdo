@@ -13,8 +13,8 @@ import { useCartContext } from "../context/cartContext";
 //item es el registro obtenido en la busqueda de itemDetailContainer.jsx
 const ItemDetail = ({ item }) => {
     const [itemCount, setItemCount] = useState(0);
-
-console.log("ItemDetail: "+item)
+  
+console.log("ItemDetailll: "+item)
     
     //const [addedToCart, setAddedToCart] = useState(false);
     const { addToCart } = useCartContext();
@@ -40,17 +40,20 @@ console.log("ItemDetail: "+item)
     return (
         <>
         {
+          
             //pregunto si obtuve un registro, si lo obtuve dibujo el DOM
             item //&& item.imagen
            ? 
-
+          
 <Card style={{ width: '18rem' }}>
       {/* utilizo las llaves para colocar comentario:
       utilizo la constante llamada Imagenes para indicar la ruta donde tengo las imagenes, 
       pictureUrl contiene el nombre de la imagen, dicho nombre la leo del archivo JSON llamado Productos
       <Card.Img variant="top" src={Imagenes(`./${item.imagen[0]}`)} />*/}
-      <Card.Img variant="top" src=""/>
+      <Card.Img variant="top" src= {item.imagen}/>
+      
       <Card.Body>
+   
         {/*title la obtengo del JSON */}
         <Card.Title>{item.nombre}
 </Card.Title>
